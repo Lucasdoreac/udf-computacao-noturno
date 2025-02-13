@@ -2,7 +2,7 @@
 
 ## 🗓️ Grade de Horários
 
-### Segunda-Feira
+### Terça-Feira
 - **Programação Orientada a Objetos (POO)**
   - Professor: Gleidson
   - Local: Lab-1 / 4R
