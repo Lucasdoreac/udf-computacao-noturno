@@ -46,9 +46,23 @@
     <main class="container mx-auto px-4 py-8">
         <section class="mb-8">
             <h2 class="text-2xl font-bold mb-6">Últimas Atualizações</h2>
-            <div class="grid gap-6" id="posts">
-                <!-- Posts serão carregados aqui -->
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+                <p class="mt-4 text-gray-600">Carregando posts...</p>
             </div>
+            <!-- Error State -->
+            <div id="error" class="hidden text-center py-12">
+                <div class="text-red-500 text-xl mb-4">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <p class="text-red-600">Erro ao carregar os posts.</p>
+                <button onclick="loadPosts()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    Tentar Novamente
+                </button>
+            </div>
+            <!-- Posts Container -->
+            <div class="grid gap-6" id="posts"></div>
         </section>
 
         <!-- Links Úteis -->
@@ -92,14 +106,30 @@
 
     <script>
         async function loadPosts() {
+            const loadingElement = document.getElementById('loading');
+            const errorElement = document.getElementById('error');
+            const postsContainer = document.getElementById('posts');
+            
+            // Mostrar loading e esconder erro
+            loadingElement.classList.remove('hidden');
+            errorElement.classList.add('hidden');
+            postsContainer.innerHTML = '';
+            
             try {
+                // Adicionar um pequeno delay para garantir que a UI atualize
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
                 const response = await fetch('posts.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const posts = await response.json();
-                const postsContainer = document.getElementById('posts');
+                console.log('Posts carregados:', posts.length);
                 
                 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
                 
-                postsContainer.innerHTML = posts.map(post => `
+                const postsHTML = posts.map(post => `
                     <article class="bg-white rounded-lg shadow-md p-6">
                         <header class="mb-4">
                             <h3 class="text-xl font-bold">${post.title}</h3>
@@ -121,12 +151,34 @@
                         ` : ''}
                     </article>
                 `).join('');
+                
+                // Esconder loading depois de preparar o HTML
+                loadingElement.classList.add('hidden');
+                
+                // Inserir posts no container
+                postsContainer.innerHTML = postsHTML;
+                
+                console.log('Posts renderizados com sucesso');
             } catch (error) {
                 console.error('Erro ao carregar os posts:', error);
+                loadingElement.classList.add('hidden');
+                errorElement.classList.remove('hidden');
             }
         }
 
+        // Tentar carregar os posts quando a página carregar
         document.addEventListener('DOMContentLoaded', loadPosts);
+        
+        // Tentar novamente após 2 segundos se falhar
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const postsContainer = document.getElementById('posts');
+                if (postsContainer.children.length === 0) {
+                    console.log('Tentando carregar posts novamente...');
+                    loadPosts();
+                }
+            }, 2000);
+        });
     </script>
 </body>
 </html>
