@@ -6,6 +6,17 @@
     <title>Diário de Bordo - Ciência da Computação UDF</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-100">
     <header class="bg-blue-600 text-white shadow-lg">
@@ -16,78 +27,21 @@
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        <!-- Grade de Disciplinas -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">Disciplinas</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- POO -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Programação Orientada a Objetos</h3>
-                    <p class="text-gray-600 mb-4">Segunda-Feira | Lab-1 / 4R</p>
-                    <p class="mb-2"><strong>Professor:</strong> Gleidson</p>
-                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/programacao-orientada-objetos" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
-                </div>
-                
-                <!-- Estrutura de Dados -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Estrutura de Dados</h3>
-                    <p class="text-gray-600 mb-4">Quarta-Feira | Lab-2 / Sede</p>
-                    <p class="mb-2"><strong>Professora:</strong> Kadidja</p>
-                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/estrutura-dados" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
-                </div>
-                
-                <!-- Banco de Dados -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Banco de Dados</h3>
-                    <p class="text-gray-600 mb-4">Quinta-Feira | Lab-3 / 4R</p>
-                    <p class="mb-2"><strong>Professor:</strong> A definir</p>
-                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/banco-dados" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
-                </div>
-                
-                <!-- Cálculo 1 -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Cálculo 1</h3>
-                    <p class="text-gray-600 mb-4">Online</p>
-                    <p class="mb-2"><strong>Modalidade:</strong> EAD</p>
-                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/calculo-1" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
-                </div>
-                
-                <!-- Sistema Cliente&Servidor -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-2">Sistema Cliente&Servidor</h3>
-                    <p class="text-gray-600 mb-4">Online</p>
-                    <p class="mb-2"><strong>Modalidade:</strong> EAD</p>
-                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/sistema-cliente-servidor" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
-                </div>
-            </div>
-        </section>
+        <!-- Loading Message -->
+        <div id="loading" class="text-center py-8">
+            <p class="text-gray-600">Carregando posts...</p>
+        </div>
 
-        <!-- Posts -->
+        <!-- Error Message -->
+        <div id="error" class="hidden text-center py-8">
+            <p class="text-red-600">Erro ao carregar os posts. Por favor, tente novamente.</p>
+        </div>
+
+        <!-- Posts Container -->
         <section class="mb-8">
             <h2 class="text-2xl font-bold mb-6">Últimas Atualizações</h2>
             <div class="grid gap-6" id="posts">
-                <!-- Posts serão carregados aqui via JavaScript -->
-            </div>
-        </section>
-
-        <!-- Links Úteis -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold mb-6">Links Úteis</h2>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <ul class="space-y-2">
-                    <li>
-                        <a href="https://discord.gg/EjGeVS89" class="text-blue-600 hover:text-blue-800 flex items-center">
-                            <i class="fab fa-discord mr-2"></i>
-                            Discord para Estudo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/Lucasdoreac/udf-computacao-noturno" class="text-blue-600 hover:text-blue-800 flex items-center">
-                            <i class="fab fa-github mr-2"></i>
-                            Repositório no GitHub
-                        </a>
-                    </li>
-                </ul>
+                <!-- Posts serão carregados aqui -->
             </div>
         </section>
     </main>
@@ -107,14 +61,27 @@
 
     <script>
         async function loadPosts() {
+            const loadingElement = document.getElementById('loading');
+            const errorElement = document.getElementById('error');
+            const postsContainer = document.getElementById('posts');
+
             try {
+                console.log('Iniciando carregamento dos posts...');
+                loadingElement.classList.remove('hidden');
+                errorElement.classList.add('hidden');
+
                 const response = await fetch('posts.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                console.log('Resposta recebida do servidor');
+
                 const posts = await response.json();
-                const postsContainer = document.getElementById('posts');
-                
+                console.log('Posts carregados:', posts.length);
+
                 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                postsContainer.innerHTML = posts.map(post => `
+
+                const postsHTML = posts.map(post => `
                     <article class="bg-white rounded-lg shadow-md p-6">
                         <header class="mb-4">
                             <h3 class="text-xl font-bold">${post.title}</h3>
@@ -122,7 +89,7 @@
                                 ${new Date(post.date).toLocaleDateString('pt-BR')}
                             </time>
                         </header>
-                        <div class="prose">
+                        <div class="prose max-w-none">
                             ${post.content}
                         </div>
                         ${post.tags ? `
@@ -136,11 +103,19 @@
                         ` : ''}
                     </article>
                 `).join('');
+
+                postsContainer.innerHTML = postsHTML;
+                console.log('Posts renderizados com sucesso');
+
             } catch (error) {
                 console.error('Erro ao carregar os posts:', error);
+                errorElement.classList.remove('hidden');
+            } finally {
+                loadingElement.classList.add('hidden');
             }
         }
 
+        // Carrega os posts quando a página é carregada
         document.addEventListener('DOMContentLoaded', loadPosts);
     </script>
 </body>
