@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Bordo - UDF Computação</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="text-xl font-bold">UDF Computação</a>
+                <div class="flex space-x-8">
+                    <a href="index.html" class="hover:text-blue-200">Início</a>
+                    <a href="poo.html" class="hover:text-blue-200">POO</a>
+                    <a href="estrutura.html" class="hover:text-blue-200">Estrutura de Dados</a>
+                    <a href="banco.html" class="hover:text-blue-200">Banco de Dados</a>
+                    <a href="calculo.html" class="hover:text-blue-200">Cálculo 1</a>
+                    <a href="sistema.html" class="hover:text-blue-200">Sistema C&S</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-3xl font-bold">Diário de Bordo</h1>
+            <p class="mt-2">Registro de aprendizado e evolução do curso</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- POO -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">💻 POO</h2>
+                <div class="markdown-content" data-markdown-url="logs/poo.md">
+Carregando conteúdo...
+                </div>
+            </div>
+
+            <!-- Estrutura de Dados -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">🌳 Estrutura de Dados</h2>
+                <div class="markdown-content" data-markdown-url="logs/estrutura.md">
+Carregando conteúdo...
+                </div>
+            </div>
+
+            <!-- Banco de Dados -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">🗄️ Banco de Dados</h2>
+                <div class="markdown-content" data-markdown-url="logs/banco.md">
+Carregando conteúdo...
+                </div>
+            </div>
+
+            <!-- Cálculo 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">📊 Cálculo 1</h2>
+                <div class="markdown-content" data-markdown-url="logs/calculo.md">
+Carregando conteúdo...
+                </div>
+            </div>
+
+            <!-- Sistema Cliente&Servidor -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">🌐 Sistema C&S</h2>
+                <div class="markdown-content" data-markdown-url="logs/sistema.md">
+Carregando conteúdo...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>Desenvolvido e mantido por alunos do curso de Ciência da Computação - UDF</p>
+            <p class="text-sm mt-2">Última atualização: 13 de Fevereiro de 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Função para carregar e renderizar conteúdo Markdown
+        async function loadMarkdownContent() {
+            const markdownElements = document.querySelectorAll('.markdown-content');
+            
+            for (const element of markdownElements) {
+                const url = element.dataset.markdownUrl;
+                try {
+                    const response = await fetch(url);
+                    const text = await response.text();
+                    element.innerHTML = marked.parse(text);
+                } catch (error) {
+                    console.error('Erro ao carregar conteúdo:', error);
+                    element.innerHTML = '<p class="text-red-600">Erro ao carregar conteúdo. Por favor, tente novamente mais tarde.</p>';
+                }
+            }
+        }
+
+        // Carrega o conteúdo quando a página estiver pronta
+        document.addEventListener('DOMContentLoaded', loadMarkdownContent);
+    </script>
+</body>
+</html>
