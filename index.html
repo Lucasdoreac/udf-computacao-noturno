@@ -16,10 +16,78 @@
     </header>
 
     <main class="container mx-auto px-4 py-8">
+        <!-- Grade de Disciplinas -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Disciplinas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- POO -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Programação Orientada a Objetos</h3>
+                    <p class="text-gray-600 mb-4">Segunda-Feira | Lab-1 / 4R</p>
+                    <p class="mb-2"><strong>Professor:</strong> Gleidson</p>
+                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/programacao-orientada-objetos" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
+                </div>
+                
+                <!-- Estrutura de Dados -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Estrutura de Dados</h3>
+                    <p class="text-gray-600 mb-4">Quarta-Feira | Lab-2 / Sede</p>
+                    <p class="mb-2"><strong>Professora:</strong> Kadidja</p>
+                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/estrutura-dados" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
+                </div>
+                
+                <!-- Banco de Dados -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Banco de Dados</h3>
+                    <p class="text-gray-600 mb-4">Quinta-Feira | Lab-3 / 4R</p>
+                    <p class="mb-2"><strong>Professor:</strong> A definir</p>
+                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/banco-dados" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
+                </div>
+                
+                <!-- Cálculo 1 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Cálculo 1</h3>
+                    <p class="text-gray-600 mb-4">Online</p>
+                    <p class="mb-2"><strong>Modalidade:</strong> EAD</p>
+                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/calculo-1" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
+                </div>
+                
+                <!-- Sistema Cliente&Servidor -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-2">Sistema Cliente&Servidor</h3>
+                    <p class="text-gray-600 mb-4">Online</p>
+                    <p class="mb-2"><strong>Modalidade:</strong> EAD</p>
+                    <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas/sistema-cliente-servidor" class="text-blue-600 hover:text-blue-800">Ver conteúdo →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Posts -->
         <section class="mb-8">
-            <h2 class="text-2xl font-bold mb-4">Últimas Atualizações</h2>
+            <h2 class="text-2xl font-bold mb-6">Últimas Atualizações</h2>
             <div class="grid gap-6" id="posts">
                 <!-- Posts serão carregados aqui via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Links Úteis -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-6">Links Úteis</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="https://discord.gg/EjGeVS89" class="text-blue-600 hover:text-blue-800 flex items-center">
+                            <i class="fab fa-discord mr-2"></i>
+                            Discord para Estudo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Lucasdoreac/udf-computacao-noturno" class="text-blue-600 hover:text-blue-800 flex items-center">
+                            <i class="fab fa-github mr-2"></i>
+                            Repositório no GitHub
+                        </a>
+                    </li>
+                </ul>
             </div>
         </section>
     </main>
@@ -38,7 +106,6 @@
     </footer>
 
     <script>
-        // Função para carregar os posts do arquivo posts.json
         async function loadPosts() {
             try {
                 const response = await fetch('posts.json');
@@ -74,7 +141,6 @@
             }
         }
 
-        // Carrega os posts quando a página é carregada
         document.addEventListener('DOMContentLoaded', loadPosts);
     </script>
 </body>
