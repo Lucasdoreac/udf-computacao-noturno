@@ -4,29 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diário de Bordo - Ciência da Computação UDF</title>
-    <link href="./dist/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-gray-100">
-    <header class="bg-primary text-white shadow-lg">
+    <header class="bg-blue-600 text-white shadow-lg">
         <div class="container mx-auto px-4 py-6">
-            <h1 class="heading-1">Diário de Bordo</h1>
+            <h1 class="text-3xl font-bold">Diário de Bordo</h1>
             <p class="text-xl">Ciência da Computação - UDF Noturno</p>
         </div>
     </header>
 
+    <!-- Grade de Horários -->
+    <section class="container mx-auto px-4 py-8 bg-white shadow-md rounded-lg my-8">
+        <h2 class="text-2xl font-bold mb-6">Grade de Horários</h2>
+        <div class="space-y-4">
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-bold">Segunda-Feira</h3>
+                <p>Programação Orientada a Objetos (POO)</p>
+                <p class="text-gray-600">Professor: Gleidson | Lab-1 / 4R</p>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-bold">Quarta-Feira</h3>
+                <p>Estrutura de Dados</p>
+                <p class="text-gray-600">Professora: Kadidja | Lab-2 / Sede</p>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-bold">Quinta-Feira</h3>
+                <p>Banco de Dados</p>
+                <p class="text-gray-600">Lab-3 / 4R</p>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-bold">Disciplinas Online</h3>
+                <p>• Cálculo 1</p>
+                <p>• Sistema Cliente&Servidor</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts -->
     <main class="container mx-auto px-4 py-8">
-        <div id="loading" class="text-center py-8">
-            <p class="text-gray-600">Carregando posts...</p>
-        </div>
-
-        <div id="error" class="hidden text-center py-8">
-            <p class="text-red-600">Erro ao carregar os posts. Por favor, tente novamente.</p>
-        </div>
-
         <section class="mb-8">
-            <h2 class="heading-2 mb-6">Últimas Atualizações</h2>
-            <div class="grid gap-6" id="posts"></div>
+            <h2 class="text-2xl font-bold mb-6">Últimas Atualizações</h2>
+            <div class="grid gap-6" id="posts">
+                <!-- Posts serão carregados aqui -->
+            </div>
+        </section>
+
+        <!-- Links Úteis -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-6">Links Úteis</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/disciplinas" 
+                   class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <i class="fas fa-book text-blue-600 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Material das Disciplinas</h3>
+                    <p class="text-gray-600">Acesse as anotações e materiais de cada disciplina</p>
+                </a>
+                <a href="https://github.com/Lucasdoreac/udf-computacao-noturno/tree/main/recursos" 
+                   class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <i class="fas fa-laptop-code text-blue-600 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Recursos</h3>
+                    <p class="text-gray-600">Material complementar e links úteis</p>
+                </a>
+                <a href="https://discord.gg/EjGeVS89" 
+                   class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <i class="fab fa-discord text-blue-600 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Discord da Turma</h3>
+                    <p class="text-gray-600">Participe do nosso grupo de estudos</p>
+                </a>
+            </div>
         </section>
     </main>
 
@@ -45,27 +92,15 @@
 
     <script>
         async function loadPosts() {
-            const loadingElement = document.getElementById('loading');
-            const errorElement = document.getElementById('error');
-            const postsContainer = document.getElementById('posts');
-
             try {
-                console.log('Iniciando carregamento dos posts...');
-                loadingElement.classList.remove('hidden');
-                errorElement.classList.add('hidden');
-
                 const response = await fetch('posts.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
                 const posts = await response.json();
-                console.log('Posts carregados:', posts.length);
-
+                const postsContainer = document.getElementById('posts');
+                
                 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                const postsHTML = posts.map(post => `
-                    <article class="card">
+                
+                postsContainer.innerHTML = posts.map(post => `
+                    <article class="bg-white rounded-lg shadow-md p-6">
                         <header class="mb-4">
                             <h3 class="text-xl font-bold">${post.title}</h3>
                             <time class="text-gray-500" datetime="${post.date}">
@@ -86,15 +121,8 @@
                         ` : ''}
                     </article>
                 `).join('');
-
-                postsContainer.innerHTML = postsHTML;
-                console.log('Posts renderizados com sucesso');
-
             } catch (error) {
                 console.error('Erro ao carregar os posts:', error);
-                errorElement.classList.remove('hidden');
-            } finally {
-                loadingElement.classList.add('hidden');
             }
         }
 
