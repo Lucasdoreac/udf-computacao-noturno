@@ -1,13 +1,16 @@
-Diário de Bordo - Sistema Cliente&Servidor
-Módulo 1 - Fundamentos
-1. Introdução à Arquitetura Cliente-Servidor
+# Diário de Bordo - Cliente & Servidor
 
-Principais Tópicos:
-1. Conceitos básicos
-2. Protocolos de comunicação
-3. Modelos de arquitetura
+## Módulo 1 - Fundamentos
 
-Exemplos Práticos:
+### 1. Introdução à Arquitetura Cliente-Servidor
+
+#### Principais Tópicos
+- Conceitos básicos
+- Protocolos de comunicação
+- Modelos de arquitetura
+
+#### Exemplos Práticos
+```javascript
 // Exemplo de servidor HTTP simples
 const http = require('http');
 
@@ -18,25 +21,29 @@ const server = http.createServer((req, res) => {
 
 server.listen(3000, 'localhost');
 console.log('Servidor rodando em http://localhost:3000/');
+```
 
-Links Úteis:
-Material Online
-Exercícios Práticos
+#### Links Úteis
+- Material Online
+- Exercícios Práticos
 
-Anotações Pessoais:
-Revisar: protocolos TCP/IP
-Próximo tópico: WebSockets
+#### Anotações Pessoais
+- Revisar: protocolos TCP/IP
+- Próximo tópico: WebSockets
 
-Organização do Curso:
-Avaliações
-Prova 1: Data a definir
-Projeto prático: API REST
+---
 
-Bibliografia Recomendada:
+## Organização do Curso
+
+### Avaliações
+- Prova 1: Data a definir
+- Projeto prático: API REST
+
+### Bibliografia Recomendada
 1. Redes de Computadores - Tanenbaum
 2. HTTP: The Definitive Guide
 
-Ferramentas Utilizadas:
-Postman
-Node.js
-Express
+### Ferramentas Utilizadas
+- Postman
+- Node.js
+- Express
