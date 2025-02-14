@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banco de Dados - UDF Computação</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body class="bg-gray-100">
     <nav class="bg-blue-900 text-white">
@@ -18,6 +19,7 @@
                     <a href="banco.html" class="hover:text-blue-200">Banco de Dados</a>
                     <a href="calculo.html" class="hover:text-blue-200">Cálculo 1</a>
                     <a href="sistema.html" class="hover:text-blue-200">Sistema C&S</a>
+                    <a href="diario.html" class="hover:text-blue-200">Diário de Bordo</a>
                 </div>
             </div>
         </div>
@@ -34,36 +36,27 @@
         <div class="grid md:grid-cols-2 gap-8">
             <!-- Conteúdo das Aulas -->
             <section class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-4">📚 Conteúdo das Aulas</h2>
-                <div class="space-y-4">
-                    <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Aula 1 - Introdução a Banco de Dados</h3>
-                        <p class="text-gray-600 mt-2">Conceitos fundamentais e SGBD</p>
-                        <a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Ver material</a>
-                    </div>
-                    <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Aula 2 - Modelagem de Dados</h3>
-                        <p class="text-gray-600 mt-2">Modelo ER e normalização</p>
-                        <a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Ver material</a>
-                    </div>
+                <h2 class="text-2xl font-bold mb-4">📚 Aulas e Materiais</h2>
+                <div class="markdown-content" data-markdown-url="logs/banco.md">
+                    Carregando conteúdo...
                 </div>
             </section>
 
-            <!-- Recursos e Links -->
+            <!-- Links e Recursos -->
             <section class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-4">🔗 Recursos</h2>
+                <h2 class="text-2xl font-bold mb-4">🔗 Links e Recursos</h2>
                 <div class="space-y-4">
                     <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Material Complementar</h3>
-                        <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600">
-                            <li><a href="#" class="text-blue-600 hover:underline">Apostila de SQL</a></li>
-                            <li><a href="#" class="text-blue-600 hover:underline">Exercícios práticos</a></li>
+                        <h3 class="font-bold">Material da Disciplina</h3>
+                        <ul class="list-disc list-inside mt-2 space-y-2">
+                            <li><a href="#" class="text-blue-600 hover:underline">Slides das Aulas</a></li>
                             <li><a href="#" class="text-blue-600 hover:underline">Scripts SQL</a></li>
+                            <li><a href="#" class="text-blue-600 hover:underline">Exercícios Práticos</a></li>
                         </ul>
                     </div>
                     <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Links Úteis</h3>
-                        <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600">
+                        <h3 class="font-bold">Recursos Externos</h3>
+                        <ul class="list-disc list-inside mt-2 space-y-2">
                             <li><a href="https://www.w3schools.com/sql/" class="text-blue-600 hover:underline">W3Schools SQL</a></li>
                             <li><a href="https://sqlzoo.net/" class="text-blue-600 hover:underline">SQLZoo</a></li>
                         </ul>
@@ -72,25 +65,24 @@
             </section>
         </div>
 
-        <!-- Projetos Práticos -->
+        <!-- Ferramentas e Ambientes -->
         <section class="bg-white rounded-lg shadow-md p-6 mt-8">
-            <h2 class="text-2xl font-bold mb-4">💻 Projetos Práticos</h2>
-            <div class="grid md:grid-cols-2 gap-4">
+            <h2 class="text-2xl font-bold mb-4">🛠️ Ferramentas e Ambientes</h2>
+            <div class="grid md:grid-cols-3 gap-4">
                 <div class="p-4 border rounded hover:bg-gray-50">
-                    <h3 class="font-bold">Sistema de Biblioteca</h3>
-                    <p class="text-gray-600 mt-2">Modelagem e implementação de banco de dados para biblioteca</p>
-                    <div class="mt-2 space-x-2">
-                        <a href="#" class="text-blue-600 hover:underline">Ver projeto</a>
-                        <a href="#" class="text-blue-600 hover:underline">Script SQL</a>
-                    </div>
+                    <h3 class="font-bold">MySQL Workbench</h3>
+                    <p class="text-gray-600 mt-2">Ambiente de desenvolvimento integrado para MySQL</p>
+                    <a href="https://www.mysql.com/products/workbench/" class="text-blue-600 hover:underline mt-2 inline-block">Download</a>
                 </div>
                 <div class="p-4 border rounded hover:bg-gray-50">
-                    <h3 class="font-bold">E-commerce</h3>
-                    <p class="text-gray-600 mt-2">Banco de dados para sistema de comércio eletrônico</p>
-                    <div class="mt-2 space-x-2">
-                        <a href="#" class="text-blue-600 hover:underline">Ver projeto</a>
-                        <a href="#" class="text-blue-600 hover:underline">Script SQL</a>
-                    </div>
+                    <h3 class="font-bold">PostgreSQL</h3>
+                    <p class="text-gray-600 mt-2">Sistema de gerenciamento de banco de dados objeto-relacional</p>
+                    <a href="https://www.postgresql.org/" class="text-blue-600 hover:underline mt-2 inline-block">Download</a>
+                </div>
+                <div class="p-4 border rounded hover:bg-gray-50">
+                    <h3 class="font-bold">DBeaver</h3>
+                    <p class="text-gray-600 mt-2">Cliente SQL universal</p>
+                    <a href="https://dbeaver.io/" class="text-blue-600 hover:underline mt-2 inline-block">Download</a>
                 </div>
             </div>
         </section>
@@ -102,5 +94,25 @@
             <p class="text-sm mt-2">Última atualização: 13 de Fevereiro de 2025</p>
         </div>
     </footer>
+
+    <script>
+        async function loadMarkdownContent() {
+            const markdownElements = document.querySelectorAll('.markdown-content');
+            
+            for (const element of markdownElements) {
+                const url = element.dataset.markdownUrl;
+                try {
+                    const response = await fetch(url);
+                    const text = await response.text();
+                    element.innerHTML = marked.parse(text);
+                } catch (error) {
+                    console.error('Erro ao carregar conteúdo:', error);
+                    element.innerHTML = '<p class="text-red-600">Erro ao carregar conteúdo. Por favor, tente novamente mais tarde.</p>';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadMarkdownContent);
+    </script>
 </body>
 </html>
