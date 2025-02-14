@@ -21,8 +21,8 @@ Resolução:
 ```
 
 #### Links Úteis
-- [Material Online](link_do_material)
-- [Lista de Exercícios](link_dos_exercicios)
+- Material Online
+- Lista de Exercícios
 
 #### Anotações Pessoais
 - Revisar: fatoramento
