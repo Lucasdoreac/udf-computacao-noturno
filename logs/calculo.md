@@ -12,6 +12,12 @@
 #### Exemplos Resolvidos
 ```
 lim(x->2) (x^2 - 4)/(x - 2) = 4
+
+Resolução:
+1. Fatorar o numerador: (x+2)(x-2)
+2. Simplificar com (x-2)
+3. Resultado: x + 2
+4. Substituir x por 2: 2 + 2 = 4
 ```
 
 #### Links Úteis
