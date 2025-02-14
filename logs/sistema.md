@@ -24,8 +24,8 @@ console.log('Servidor rodando em http://localhost:3000/');
 ```
 
 #### Links Úteis
-- [Material Online](link_do_material)
-- [Exercícios Práticos](link_dos_exercicios)
+- Material Online
+- Exercícios Práticos
 
 #### Anotações Pessoais
 - Revisar: protocolos TCP/IP
