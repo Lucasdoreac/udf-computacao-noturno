@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Cliente&Servidor - UDF Computação</title>
+    <title>Sistemas Computacionais e Segurança - UDF Computação</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body class="bg-gray-100">
     <nav class="bg-blue-900 text-white">
@@ -18,6 +19,7 @@
                     <a href="banco.html" class="hover:text-blue-200">Banco de Dados</a>
                     <a href="calculo.html" class="hover:text-blue-200">Cálculo 1</a>
                     <a href="sistema.html" class="hover:text-blue-200">Sistema C&S</a>
+                    <a href="diario.html" class="hover:text-blue-200">Diário de Bordo</a>
                 </div>
             </div>
         </div>
@@ -25,8 +27,8 @@
 
     <header class="bg-blue-800 text-white shadow-lg">
         <div class="container mx-auto px-4 py-6">
-            <h1 class="text-3xl font-bold">Sistema Cliente&Servidor</h1>
-            <p class="mt-2">Disciplina Online</p>
+            <h1 class="text-3xl font-bold">Sistemas Computacionais e Segurança</h1>
+            <p class="mt-2">Professor: Rafael | Local: Lab-2 / 4R</p>
         </div>
     </header>
 
@@ -34,73 +36,62 @@
         <div class="grid md:grid-cols-2 gap-8">
             <!-- Conteúdo das Aulas -->
             <section class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-4">📚 Tópicos do Curso</h2>
-                <div class="space-y-4">
-                    <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Módulo 1 - Arquitetura Cliente-Servidor</h3>
-                        <p class="text-gray-600 mt-2">Fundamentos e conceitos básicos</p>
-                        <a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Ver material</a>
-                    </div>
-                    <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Módulo 2 - Protocolos de Comunicação</h3>
-                        <p class="text-gray-600 mt-2">HTTP, TCP/IP e outros protocolos</p>
-                        <a href="#" class="text-blue-600 hover:underline mt-2 inline-block">Ver material</a>
-                    </div>
+                <h2 class="text-2xl font-bold mb-4">📚 Aulas e Materiais</h2>
+                <div class="markdown-content" data-markdown-url="logs/sistema.md">
+                    Carregando conteúdo...
                 </div>
             </section>
 
-            <!-- Recursos e Links -->
+            <!-- Links e Recursos -->
             <section class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-4">🔗 Recursos</h2>
+                <h2 class="text-2xl font-bold mb-4">🔗 Links e Recursos</h2>
                 <div class="space-y-4">
                     <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Material Complementar</h3>
-                        <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600">
-                            <li><a href="#" class="text-blue-600 hover:underline">Apostila de redes</a></li>
-                            <li><a href="#" class="text-blue-600 hover:underline">Exemplos práticos</a></li>
-                            <li><a href="#" class="text-blue-600 hover:underline">Artigos recomendados</a></li>
+                        <h3 class="font-bold">Material da Disciplina</h3>
+                        <ul class="list-disc list-inside mt-2 space-y-2">
+                            <li><a href="#" class="text-blue-600 hover:underline">Slides das Aulas</a></li>
+                            <li><a href="#" class="text-blue-600 hover:underline">Laboratórios Práticos</a></li>
+                            <li><a href="#" class="text-blue-600 hover:underline">Projetos</a></li>
                         </ul>
                     </div>
                     <div class="p-4 border rounded hover:bg-gray-50">
-                        <h3 class="font-bold">Links Úteis</h3>
-                        <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600">
-                            <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTTP" class="text-blue-600 hover:underline">MDN Web Docs - HTTP</a></li>
-                            <li><a href="https://www.postman.com/" class="text-blue-600 hover:underline">Postman</a></li>
+                        <h3 class="font-bold">Recursos Externos</h3>
+                        <ul class="list-disc list-inside mt-2 space-y-2">
+                            <li><a href="https://www.kernel.org" class="text-blue-600 hover:underline">Linux Kernel</a></li>
+                            <li><a href="https://owasp.org" class="text-blue-600 hover:underline">OWASP</a></li>
+                            <li><a href="https://www.cisco.com/c/en/us/training-events.html" class="text-blue-600 hover:underline">Cisco Training</a></li>
                         </ul>
                     </div>
                 </div>
             </section>
         </div>
-
-        <!-- Projetos Práticos -->
-        <section class="bg-white rounded-lg shadow-md p-6 mt-8">
-            <h2 class="text-2xl font-bold mb-4">💻 Projetos Práticos</h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="p-4 border rounded hover:bg-gray-50">
-                    <h3 class="font-bold">API REST Simples</h3>
-                    <p class="text-gray-600 mt-2">Desenvolvimento de uma API REST básica</p>
-                    <div class="mt-2 space-x-2">
-                        <a href="#" class="text-blue-600 hover:underline">Ver projeto</a>
-                        <a href="#" class="text-blue-600 hover:underline">Código fonte</a>
-                    </div>
-                </div>
-                <div class="p-4 border rounded hover:bg-gray-50">
-                    <h3 class="font-bold">Sistema Distribuído</h3>
-                    <p class="text-gray-600 mt-2">Implementação de um sistema distribuído simples</p>
-                    <div class="mt-2 space-x-2">
-                        <a href="#" class="text-blue-600 hover:underline">Ver projeto</a>
-                        <a href="#" class="text-blue-600 hover:underline">Código fonte</a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="bg-gray-800 text-white py-6 mt-8">
         <div class="container mx-auto px-4 text-center">
             <p>Desenvolvido e mantido por alunos do curso de Ciência da Computação - UDF</p>
-            <p class="text-sm mt-2">Última atualização: 13 de Fevereiro de 2025</p>
+            <p class="text-sm mt-2">Última atualização: 14 de Fevereiro de 2025</p>
         </div>
     </footer>
+
+    <script>
+        async function loadMarkdownContent() {
+            const markdownElements = document.querySelectorAll('.markdown-content');
+            
+            for (const element of markdownElements) {
+                const url = element.dataset.markdownUrl;
+                try {
+                    const response = await fetch(url);
+                    const text = await response.text();
+                    element.innerHTML = marked.parse(text);
+                } catch (error) {
+                    console.error('Erro ao carregar conteúdo:', error);
+                    element.innerHTML = '<p class="text-red-600">Erro ao carregar conteúdo. Por favor, tente novamente mais tarde.</p>';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadMarkdownContent);
+    </script>
 </body>
 </html>
