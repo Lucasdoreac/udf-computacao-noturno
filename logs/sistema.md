@@ -1,4 +1,4 @@
-# Diário de Bordo - Sistema Cliente&Servidor
+# Diário de Bordo - Cliente & Servidor
 
 ## Módulo 1 - Fundamentos
 
